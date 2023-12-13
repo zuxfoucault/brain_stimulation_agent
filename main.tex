@@ -1,0 +1,355 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage{booktabs} % Horizontal rules in tables
+% For generating tables, use “LaTeX” online generator (https://www.tablesgenerator.com)
+\usepackage{comment} % Necessary to comment several paragraphs at once
+\usepackage[utf8]{inputenc} % Required for international characters
+\usepackage[T1]{fontenc} % Required for output font encoding for international characters
+\usepackage{csquotes}
+
+%% Might be helpful
+\usepackage{amsmath,amsfonts,amsthm} % Math packages which might be useful for equations
+%\usepackage{tikz} % For tikz figures (to draw arrow diagrams, see a guide how to use them)
+%\usepackage{tikz-cd}
+%\usetikzlibrary{positioning,arrows} % Adding libraries for arrows
+%\usetikzlibrary{decorations.pathreplacing} % Adding libraries for decorations and paths
+%\usepackage{tikzsymbols} % For amazing symbols ;) https://mirror.hmc.edu/ctan/graphics/pgf/contrib/tikzsymbols/tikzsymbols.pdf 
+\usepackage{blindtext} % To add some blind text in your paper
+
+%\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage[labelfont=bf,textfont=normalfont,singlelinecheck=off,justification=raggedright]{subcaption}
+%\usepackage[labelfont=bf,textfont=normalfont,singlelinecheck=off]{subcaption}
+%\captionsetup[figure]{labelformat=simple, labelsep=colon}
+%\captionsetup[subfigure]{labelformat=parens, labelsep=none, justification=raggedright}
+\captionsetup[figure]{labelfont=bf,font=small,labelsep=colon}
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+
+%---------------------------------------------------------------------------------
+% Additional settings
+%---------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------
+% Define your margins
+\usepackage{geometry} % Necessary package for defining margins
+\geometry{
+	top=2cm, % Defines top margin
+	bottom=2cm, % Defines bottom margin
+	left=2.2cm, % Defines left margin
+	right=2.2cm, % Defines right margin
+	includehead, % Includes space for a header
+	%includefoot, % Includes space for a footer
+	%showframe, % Uncomment if you want to show how it looks on the page
+}
+
+\setlength{\parindent}{25pt} % Adjust to set you indent globally
+\usepackage{indentfirst}  % indent first paragraph
+%---------------------------------------------------------------------------------
+% Define your spacing
+\usepackage{setspace} % Required for spacing
+% Two options:
+\linespread{1.5}
+%\onehalfspacing % one-half-spacing linespread
+
+%----------------------------------------------------------------------------------------
+% Define your fonts
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+
+\usepackage{XCharter} % Use the XCharter font
+
+
+%---------------------------------------------------------------------------------
+% Define your headers and footers
+
+\usepackage{fancyhdr} % Package is needed to define header and footer
+\pagestyle{fancy} % Allows you to customize the headers and footers
+
+%\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % Removes the section number from the header when \leftmark is used
+
+% Headers
+\lhead{} % Define left header
+\chead{\textit{}} % Define center header - e.g. add your paper title
+\rhead{} % Define right header
+
+% Footers
+\lfoot{} % Define left footer
+\cfoot{\footnotesize \thepage} % Define center footer
+\rfoot{ } % Define right footer
+
+%---------------------------------------------------------------------------------
+%	Add information on bibliography
+%\usepackage{natbib} % Use natbib for citing
+%\usepackage{har2nat} % Allows to use harvard package with natbib https://mirror.reismil.ch/CTAN/macros/latex/contrib/har2nat/har2nat.pdf
+
+% For citing with natbib, you may want to use this reference sheet: 
+% http://merkel.texture.rocks/Latex/natbib.php
+
+\usepackage[sorting=nyt,style=apa,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+%\addbibresource{refs.bib}
+\addbibresource{/Users/zuxfoucaultwong/space/bibtexData/stimulation.bib}
+%% Modify “Bibliography” to “References”
+%\defbibheading{references}[\refname]{\section*{\centering#1}\markboth{#1}{#1}}
+\defbibheading{references}[\refname]{\section*{\centering#1}\markboth{#1}{#1}}
+% https://tex.stackexchange.com/questions/285790/how-to-number-and-centralize-the-heading-reference
+% The following code formats sections as centered and numbered.
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\filcenter\large\bfseries}%
+  {\thesection.}{1em}{}
+
+%---------------------------------------------------------------------------------
+% Add field for signature (Reference: https://tex.stackexchange.com/questions/35942/how-to-create-a-signature-date-page)
+\newcommand{\signature}[2][5cm]{%
+  \begin{tabular}{@{}p{#1}@{}}
+    #2 \\[2\normalbaselineskip] \hrule \\[0pt]
+    {\small \textit{Signature}} \\[2\normalbaselineskip] \hrule \\[0pt]
+    {\small \textit{Place, Date}}
+  \end{tabular}
+}
+%---------------------------------------------------------------------------------
+%	General information
+%---------------------------------------------------------------------------------
+% \title{Program Advisory Committee Research Report \#1\\
+% 	\hfill\\
+% Reinforcement learning algorithms for personalized virtual brain stimulation controller\\
+% \hfill} % Adds your title
+\title{Reinforcement learning algorithms for personalized virtual brain stimulation controller} % Adds your title
+\author{
+Fu-Te Wong\\ % Add your first and last name
+\hfill\\
+%Supervisor: Dr. John Griffiths\\
+%Committee: Drs. Jed Meltzer, Andrew Dimitrijevic, and Venkat Bhat
+    %\thanks{} % Adds a footnote to your title
+    %\institution{YOUR INSTITUTION} % Adds your institution
+  }
+
+%\date{\small \today} % Adds the current date to your “cover” page; leave empty if you do not want to add a date
+\date{} % Adds the current date to your “cover” page; leave empty if you do not want to add a date
+
+
+%---------------------------------------------------------------------------------
+%	Define what’s in your document
+%---------------------------------------------------------------------------------
+
+\begin{document}
+
+
+% If you want a cover page, uncomment "\input{coverpage.tex}" and uncomment "\begin{comment}" and "\end{comment}" to comment the following lines
+%\input{coverpage.tex}
+
+%\begin{comment}
+\maketitle % Print your title, author name and date; comment if you want a cover page 
+
+%\begin{center} % Center text
+    %Word count: XXXX
+%% How to check words in a LaTeX document: https://www.overleaf.com/help/85-is-there-a-way-to-run-a-word-count-that-doesnt-include-latex-commands
+%\end{center}
+%\end{comment}
+\newpage
+%----------------------------------------------------------------------------------------
+% Introduction
+%----------------------------------------------------------------------------------------
+\setcounter{page}{1} % Sets counter of page to 1
+
+\section*{Introduction} % Add a section title
+\subsection*{Overview}
+Brain stimulation has been successfully applied to several neuropathologies, such as Parkinson’s disease \parencite{timmermannMultiplesourceCurrentSteering2015,vitekSubthalamicNucleusDeep2020}, medication-refractory epilepsy \parencite{salanovaLongtermEfficacySafety2015}, treatment-resistant major depressive disorder \parencite{scangosClosedloopNeuromodulationIndividual2021}, and obsessive-compulsive disorder \parencite{andersonTreatmentPatientsIntractable2003,franziniDeepbrainStimulationNucleus2010}.
+However, in live humans, finding the most responsive site following stimulation for an individual still needs several iterations of trials, which may increase the risk to incur damage to brain tissue, especially during the procedure of deep brain stimulation. The process may be slow and have a limited probability of converging to the solution of the best stimulation algorithm. Running simulations based on computational biophysical models can provide useful information to predict how dynamic systems respond to stimulation, to gain insight into potential mechanisms for the stimulation to be effective, and to test stimulation algorithms.
+
+\subsection*{Neural mass models for simulating neural dynamics and neurostimulation}
+The Virtual Brain (TVB) is a neuroinformatic platform with a brain simulator that integrates large-scale structural brain connectivity and neural mass models \parencite{ritterVirtualBrainIntegrates2013a}. The individualized information of the brain topology and coupling can be extracted from the connectome reconstructed from diffusion tensor imaging. Brain dynamics are generated from the neural mass models, which simulate a collection of neural activity in a mean-field/region. Interaction of different regions is simulated as the neural dynamics propagate through the coupling factor. % TVB equations?
+Recently developed TVB-multiscale co-simulation toolbox \parencite{schirnerBrainSimulationCloud2022} further provides an interface connecting neural mass model and spiking network simulators (currently Neural Simulation Technology (NEST) \parencite{epplerPyNESTConvenientInterface2008} and Artificial Neural Network architect (ANNarchy) \parencite{vitayANNarchyCodeGeneration2015}).
+Depending on the types of stimulation to be simulated, TVB supplies stimulator surrogates using temporal equations, such as linear (constant as tDCS or DBS), sinusoid/cosine (DBS), and pulse-train (rTMS), to modulate and control neural dynamics.
+TVB serves as a nice environment to test the implementation of focal and distributed pathological changes, identify, and explore treatment strategies (e.g., policies of a controller) to counteract those unfavorable pathological processes.
+
+\subsection*{Reinforcement learning for brain stimulation control}
+Hypothetically, neuromodulation techniques can move the brain network dynamics between the diseased and healthy state \parencite{meierVirtualDeepBrain2021,stefanovskiLinkingMolecularPathways2019a}. %emergence 
+However, a system involving neuronal interactions is complex and non-linear. While traditional optimal control techniques utilizing the linear–quadratic regulator (LQR) perform well in a linear system, modeling and controlling large-scale brain dynamics would gain more benefits from data-driven optimization approaches. Reinforcement Learning (RL) provides powerful algorithms to search for optimal control strategies that can handle systems with nonlinear dynamics and nonquadratic cost functions. The basic elements of an RL system include the \textit{agent} (analog to stimulation controller), the \textit{environment} (here the virtual brain simulation), and four main subelements: a \textit{policy}, a \textit{reward signal}, and a \textit{value function} \parencite{suttonReinforcementLearningIntroduction2018}. The policy defines the learning agent's response/action to the environment, given its perceived states. The reward signal defines what are the good and bad events for the agent in an immediate sense, and the value function specifies what is good in the long run.
+
+The core of an RL agent is the policy ($\pi$), which is often calculated with a popular RL algorithm called Q-learning \parencite{watkinsQlearning1992}. The dynamic programming approach to compute the optimal Q value via the Value iteration algorithm, using Bellman optimality equation \parencite{busoniuReinforcementLearningControl2018}, is of the form:
+
+\begin{equation*}
+Q^{*}({s},{a}) \leftarrow {R}({s},{a}) +\gamma \sum_{{s'}\in {\mathcal{S}}}
+P({s'}|{s},{a}) \max_{{a'}} {Q^{*}({s'},{a'})},
+\end{equation*}
+
+\noindent where $s$ is the state dynamics, $a$ is the action, $P$ is the transition function, $R$ is the reward function, and $\gamma$ is the discount factor. Once estimation of $Q^{*}({s},{a})$ has converged, we would have the optimal policy:
+
+
+\begin{equation*}
+\pi^{*}(s) = \max_{{a}} {Q^{*}({s},{a})}
+\end{equation*}
+
+\indent We propose that the optimal policy for doing brain stimulation can be learned by an RL algorithm that is coupled to a biophysical brain simulator, such as TVB. One important goal of the policy is to steer the neural dynamics from the disease state to the healthy state (see Figure ~\ref{fig:equivalence}).
+
+
+\begin{figure}[htpb!] % Defines figure environment
+	\centering % Centers your figure
+	\includegraphics[scale=0.4]{figures/equivalence.png} % Includes your figure and defines the size
+	\caption{Schematic overview of steering brain dynamics from one state to another using The Virtual Brain. Invasive stimulation (e.g., DBS), non-invasive stimulation (e.g., TMS), and pharmacological interventions hold the potential to drive the brain dynamics from disease state to healthy state via different trajectories (Meier et al., 2021). Biophysical brain simulations allow for a comprehensive mapping of potential trajectories through this space, as well as testing and development of stimulator control algorithms, such as the RL approach developed here.} % For your caption
+	\label{fig:equivalence} % If you want to label your figure for in-text references
+\end{figure}
+
+
+% \subsection*{PhD Thesis Plan - High-level outline}
+% \indent Under this long-term motivation, 3 objectives (for 3 years PhD study time) are outlined as follows:
+\begin{description}
+	\item[Project 1] Connecting the RL agent with TVB in biophysical simulations of tDCS and tACS effects, demonstrating the neural modulation effect controlled by the RL agent for the simple case of a single, disconnected, oscillatory brain region.
+	\item[Project 2] Extension of the single-region, single-agent stimulation case in Project 1 to multi-region, multi-agent stimulation and control within a whole-brain network, corresponding to multi-focal tDCS/tACS stimulation.
+	\item[Project 3] Consolidating the developments of Projects 1 and 2, develop a new Python-based open-source software library that integrates RL algorithms (such as Deep Q-Learning for discrete action space, and Actor-Critic for continued action space) and virtual stimulation methods (such as tDCS, TMS, and DBS).
+\end{description}
+
+
+\section*{Methods} % Add a section title
+\subsection*{Deep Q-learning}
+In the RL Q-Learning process, learning the Q-function is like constructing a table containing values for each combination of state and action. Representation of the state and action pair with the Q-value is, however, a difficult task and the learning process is impractical in the real world. A more efficient RL algorithm is called Deep Q-Learning \parencite{mnihHumanlevelControlDeep2015}, which deep neural network with parameters $\theta$ as a function approximator to estimate the Q-value (i.e., $Q(s,a;\theta)\approx Q^{*}({s},{a})$). The learning process is iterated by minimizing the following loss at each step $i$:
+
+\begin{equation*}
+	L_i(\theta_i) = \mathbb{E}_{s,a,r,s' \sim \rho(.)} \left [ (y_i - Q(s,a;\theta_i))^2 \right ],
+	%y_i = r + \gama \max_{{a'}} {Q^{*}({s},{a})}
+	%y_i = r + \gama \max_{{a'}} {Q(s',a';\theta_{i-1})}
+\end{equation*}
+\begin{equation*}
+	y_i = r + \gamma \max_{{a'}} {Q(s',a';\theta_{i-1})}
+\end{equation*}
+
+In the above equation, $y_i$ is the TD (temporal difference) target, $y_i - Q$ is the TD error term, and $\rho$ represents the behavior distribution. The distribution over transitions $ \{s,a,r,s'\}$ is collected from the environment.
+
+\subsection*{Fitzhugh-Nagumo model of neural dynamics}
+As a starting point for this new simulation control approach, we began by modulating the oscillation frequency of an individual simulated neuron. The RL agent performs one of two actions: applying a fixed-amount increase or decrease in the level of static current injection to the system. This single node was represented by a FitzHugh-Nagumo (FHN) oscillator model, which is a simplified 2D version of the Hodgkin–Huxley model that models the activation and deactivation of the dynamics of a spiking neuron, with the equation:
+
+\[ \dot{x} =  \alpha \left [ y + x - \frac{x^{3}}{3} + z \right ] \]
+\[ \dot{y} =  - \frac{1}{\alpha} \left [ w^{2}x - a  + by \right ] \]
+
+Here, $x$ represents membrane potential, $y$ is the recovery variable, and $z$ is the injected current.
+
+
+
+\section*{Results} % Add a section title
+\subsection*{Non-RL Biophysical tDCS Simulations}
+To begin, we examined a simulation of brain network dynamics within a whole-brain model and non-RL-based tDCS stimulation, following the approach of \textcite{kunzeTranscranialDirectCurrent2016}. Results of this are shown in Figure \ref{fig:eeg_init}. As indicated by the power spectrum of zoomed-in EEG channel, compared with simulation of resting state, the amplitude of power was shrunk, and the oscillation frequency slowed down during tDCS simulation.
+
+\subsection*{Exploration of RL control for a network node with FHN dynamics}
+The whole-brain simulation results in Figure \ref{fig:eeg_init} provide a starting point for simulation of neural mass model-based simulation of tDCS stimulation.
+
+Next, we began our incorporation of the RL control framework into this system. We began with a virtual single node, following the FHN dynamics described earlier. As shown in Figure \ref{fig:control_init}, the RL agent can successfully learn to control the stimulation so as to steer the oscillation from one point to another in the FHN frequency space. The task was broken down into small steps, incrementally adding task difficulty. First, the goal of the agent is to keep the oscillation frequency in a fixed state with 2 control actions (i.e., increasing or decreasing injection currents) (Figure \ref{fig:fix}). Then, we added environmental and internal perturbations (Figure \ref{fig:fix_p} and Figure \ref{fig:fix_p2}, respectively). Environmental perturbations add random noise to the information seen by the RL agent, and can be understood as testing its sensitivity and accuracy to make correct control decisions, without any actual change to the neural system activity itself.
+At the next level, the RL agent is equipped with 3 actions, which are increasing, decreasing, and turning on/off the injected currents. The oscillation frequency still can be maintained under 3 conditions, i.e., no perturbations, environmental perturbations, and internal perturbations, as shown in Figure \ref{fig:fix2}, Figure \ref{fig:fix2_p}, and Figure \ref{fig:fix2_p2}, respectively. Finally, we showed that the FHN controlled by the RL agent can generate oscillation frequency at any point in the legitimate frequency space (Figure \ref{fig:seq}).
+
+
+%\begin{figure}[htpb!] % Defines figure environment
+\begin{figure}[t] % Defines figure environment
+	\centering % Centers your figure
+	\includegraphics[scale=0.5]{figures/eeg_init.png} % Includes your figure and defines the size
+	\caption{Simulated brain dynamics (represented with a power spectrum of 64 channels) in resting state and stimulation (tDCS) with TVB. The indicated zoom-in channel shows decreasing power amplitude and frequency.} % For your caption
+	\label{fig:eeg_init} % If you want to label your figure for in-text references
+\end{figure}
+
+%\begin{figure}[htpb!] % Defines figure environment
+\begin{figure}[t] % Defines figure environment
+\centering
+\begin{subfigure}{.3\textwidth}
+	\centering % Centers your figure
+	%\includegraphics[scale=0.1]{figures/r_index.png} % Includes your figure and defines the size
+	\includegraphics[width=\linewidth]{figures/result_fix.png} % Includes your figure and defines the size
+	\caption{} % For your caption
+	\label{fig:fix} % If you want to label your figure for in-text references
+	%\includegraphics[width=.9\linewidth]{image1}
+\end{subfigure}
+%\quad
+%\hspace{-3cm}
+\begin{subfigure}{.3\textwidth}
+	\centering
+	%\includegraphics[scale=0.1]{figures/r_index2.png} % Includes your figure and defines the size
+	\includegraphics[width=\linewidth]{figures/result_fix_p.png} % Includes your figure and defines the size
+	\caption{} % For your caption
+	\label{fig:fix_p} % If you want to label your figure for in-text references
+\end{subfigure}
+%\hspace{-3cm}
+\begin{subfigure}{.3\textwidth}
+	\centering
+	%\includegraphics[scale=0.1]{figures/r_index2.png} % Includes your figure and defines the size
+	\includegraphics[width=\linewidth]{figures/result_fix_p2.png} % Includes your figure and defines the size
+	\caption{} % For your caption
+	\label{fig:fix_p2} % If you want to label your figure for in-text references
+\end{subfigure}
+
+
+\begin{subfigure}{.3\textwidth}
+	\centering % Centers your figure
+	%\includegraphics[scale=0.1]{figures/r_index.png} % Includes your figure and defines the size
+	\includegraphics[width=\linewidth]{figures/result_fix2.png} % Includes your figure and defines the size
+	\caption{} % For your caption
+	\label{fig:fix2} % If you want to label your figure for in-text references
+	%\includegraphics[width=.9\linewidth]{image1}
+\end{subfigure}
+%\quad
+%\hspace{-3cm}
+\begin{subfigure}{.3\textwidth}
+	\centering
+	%\includegraphics[scale=0.1]{figures/r_index2.png} % Includes your figure and defines the size
+	\includegraphics[width=\linewidth]{figures/result_fix2_p.png} % Includes your figure and defines the size
+	\caption{} % For your caption
+	\label{fig:fix2_p} % If you want to label your figure for in-text references
+\end{subfigure}
+%\hspace{-3cm}
+\begin{subfigure}{.3\textwidth}
+	\centering
+	%\includegraphics[scale=0.1]{figures/r_index2.png} % Includes your figure and defines the size
+	\includegraphics[width=\linewidth]{figures/result_fix2_p2.png} % Includes your figure and defines the size
+	\caption{} % For your caption
+	\label{fig:fix2_p2} % If you want to label your figure for in-text references
+\end{subfigure}
+
+%\hspace{-1.5cm}
+\centering
+\begin{subfigure}{.3\textwidth}
+	\centering
+	%\includegraphics[scale=0.1]{figures/r_index2.png} % Includes your figure and defines the size
+	\includegraphics[width=\linewidth]{figures/result_seq.png} % Includes your figure and defines the size
+	\caption{} % For your caption
+	\label{fig:seq} % If you want to label your figure for in-text references
+\end{subfigure}
+
+\caption{Oscillation frequency controlled by RL agent. The first row showed a fixed state of oscillation frequency has been maintained by the RL agent with 2 control actions in the 3 conditions, where no perturbations applied in (a), environmental perturbations in (b), and  internal perturbations in (c). In the second row, the RL agent was equipped with 3 control actions and successfully maintained a fixed state of oscillation frequency in the 3 conditions same as in the first row (environmental perturbations in (e) and internal perturbations in (f)). In (g), the oscillation frequency under control of the RL agent `walks' through the legitimate frequency range.}
+\label{fig:control_init}
+\end{figure}
+
+%\newpage
+\section*{Summary and Future Directions}
+In summary, we have developed a novel framework for RL stimulator control in the context of biophysical brain simulations and experiments.
+
+% The above-reported results are modest in scope at this point, principally because the year or so of the project consisted of an exploratory phase where we evaluated a number of alternative candidate control approaches and methodologies. I am now confident that the TVB-coupled deep Q-learning framework described above is a robust and promising approach that will form the heart of this PhD research.
+
+
+% Over the next 6-9 months, with the aim of publishing the results in a computational neuroscience / engineering journal before the end of 2022, we will commence the development of Project 2. Here, we will implement multi-agents with TVB to simulate multi-focal tDCS/tACS for the networked system control. Project 3 is aiming to build an RL control library that integrates RL algorithms (such as Deep Q-Leaning for discrete action space, and Actor-Critic for continued action space) and virtual stimulation methods (such as tDCS, TMS, and DBS).
+
+The extended applications of the projects include transforming invasive stimulation into non-invasive stimulation based on simulation equivalence.
+A key long-term vision for this work is the idea that, based on simulation equivalence, it should be possible to find an optimal policy for non-invasive brain stimulation strategy that has a similar therapeutic effect as a given invasive brain stimulation strategy (Figure ~\ref{fig:equivalence}). For example, a patient with the treatment-resistant major depressive disorder may be subjected to the treatment of deep brain stimulation \parencite{scangosClosedloopNeuromodulationIndividual2021}. Considering the results of Scangos et al., imagine that the simulated activity provides that the gamma-frequency power in Amygdala is a good biomarker signal for depressive symptoms, and the ventral capsule or ventral striatum is good as the stimulating site for the closed-loop system to modulate the brain network dynamics to move from a disease state to approximately close to a healthy state ($S^*$). $S^*$ then can serve as a target for the RL agent to find an optimal non-invasive stimulation policy. To get a better result of the networked system control, an enhanced RL framework with multi-agents \parencite{chuMultiagentReinforcementLearning2020} can be implemented for the multi-focal brain stimulation scenario, as for example is now possible with new tACS, tDCS, TMS, and DBS systems \parencite[e.g., ][]{jiangDynamicMultichannelTMS2013,ruffiniTargetingBrainNetworks2018,vitekSubthalamicNucleusDeep2020}.
+
+In addition, the optimal RL algorithm allow us to explore the best sensing bio-marker, stimulation site, and stimulation parameters. The stimulation solution found by the RL agent can provide additional insights compared with the empirical closed-loop solution, for instance, the research from Scangos et al. (2021) aforementioned. Finally, an advantage of applying neural networks is that the features learned in one training environment could have predictive power in another environment. By exploiting the transfer learning advantage, we will explore the possibility that a trained RL agent can adapt to other subjects more quickly than retraining the network on those subjects from scratch.
+
+
+%----------------------------------------------------------------------------------------
+% Bibliography
+%----------------------------------------------------------------------------------------
+\newpage % Includes a new page
+
+%%\pagenumbering{roman} % Changes page numbering to roman page numbers
+%%\bibliography{literature}
+
+%%\bibliography{literature.bib} % Add the filename of your bibliography
+%%\bibliographystyle{apsr} % Defines your bibliography style
+
+%% For citing, please see this sheet: http://merkel.texture.rocks/Latex/natbib.php
+
+\printbibliography
+
+
+%%---------------------------------------------------------------------------------
+
+\end{document}
